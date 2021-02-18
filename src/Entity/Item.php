@@ -5,6 +5,7 @@ namespace App\Entity;
 class Item
 {
     /** @var string */
+    // свойства protected, для этого нет причин, можно сделать их приватными
     protected $id;
 
     /** @var string */
@@ -27,6 +28,10 @@ class Item
      */
     public function __construct($orderId, $productId, $price, $quantity)
     {
+        // вместо аннотаций использовать типизированные параметры
+        // Также замечу, что в этом классе используются геттеры и сеттеры, а в Заказе - нет.
+        // по типизации - в сеттерах это void, в геттерах - тип свойства
+        // Ну и строгий режим (declare strict types)
         $this->orderId = $orderId;
         $this->productId = $productId;
         $this->price = $price;
@@ -36,7 +41,7 @@ class Item
     /**
      * @param int $id
      */
-    public function setId(int $id)
+    public function setId(int $id) // тип не указан // Метод не используется Он вообще нужен?
     {
         $this->id = $id;
     }
@@ -44,7 +49,7 @@ class Item
     /**
      * @return int
      */
-    public function getId()
+    public function getId() // тип не указан // Метод не используется Он вообще нужен?
     {
         return $this->id;
     }
@@ -52,7 +57,7 @@ class Item
     /**
      * @return int
      */
-    public function getOrderId()
+    public function getOrderId() // тип не указан
     {
         return $this->orderId;
     }
@@ -60,7 +65,7 @@ class Item
     /**
      * @param int $orderId
      */
-    public function setOrderId(int $orderId)
+    public function setOrderId(int $orderId) // тип не указан
     {
         $this->orderId = $orderId;
     }
@@ -80,13 +85,14 @@ class Item
     public function setProductId(int $productId): self
     {
         $this->productId = $productId;
+        // лишний fluent interface. Это же не билдер + метод не используется + нигде больше нет такого
         return $this;
     }
 
     /**
      * @return int
      */
-    public function getPrice()
+    public function getPrice() // тип не указан
     {
         return $this->price;
     }
@@ -94,7 +100,7 @@ class Item
     /**
      * @param int $price
      */
-    public function setPrice(int $price)
+    public function setPrice(int $price) // тип не указан
     {
         $this->price = $price;
     }
@@ -102,7 +108,7 @@ class Item
     /**
      * @return int
      */
-    public function getQuantity()
+    public function getQuantity() // тип не указан
     {
         return $this->quantity;
     }
@@ -110,7 +116,7 @@ class Item
     /**
      * @param int $quantity
      */
-    public function setQuantity(int $quantity)
+    public function setQuantity(int $quantity) // тип не указан
     {
         $this->quantity = $quantity;
     }
